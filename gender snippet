@@ -1,0 +1,7 @@
+add_filter( 'gform_field_value_gender', 'populate_gender' );
+function populate_gender( $value ) {
+	global $wpdb;
+	$user_id = get_current_user_id();
+  $gender =$wpdb->get_var("SELECT gender FROM client_measurements WHERE user_id=".$user_id);  
+  return $gender;
+}
